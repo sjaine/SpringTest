@@ -73,9 +73,9 @@ public class Test02Controller {
 	}
 	
 	@RequestMapping("3")
-	public ResponseEntity responseEntity() {
+	public ResponseEntity<Board> responseEntity() {
 		Board first = new Board("안녕하세요 가입인사 드립니다.", "hagulu", "안녕하세요. 가입했어요. 앞으로 잘 부탁드립니다. 활동 열심히 하겠습니다.");
-		return new ResponseEntity(first, HttpStatus.INTERNAL_SERVER_ERROR);
+		return new ResponseEntity<>(first, HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 	
 }
