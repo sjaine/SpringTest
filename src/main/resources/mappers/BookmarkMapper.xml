@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="design.jaine.spring.test.datebase.repository.BookmarkRepository">
+ 
+ 	<select id="selectBookmarkList" resultType="design.jaine.spring.test.datebase.domain.Bookmark">
+ 		SELECT
+ 			`id`
+ 			, `name`
+ 			, `url`
+ 			, `createdAt`
+ 			, `updatedAt`
+ 		FROM
+ 			`bookmark`
+ 	</select>
+ 
+ </mapper>
