@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="design.jaine.spring.test.mybatis.repository.REstateRepository">
+ 
+ 	<select id="selectREstate" resultType="design.jaine.spring.test.mybatis.domain.REstate"
+ 	parameterType="int">
+ 		SELECT
+ 			`id`
+ 			, `officeId`
+ 			, `address`
+ 			, `area`
+ 			, `type`
+ 			, `price`
+ 			, `rentPrice`
+ 			, `createdAt`
+ 			, `updatedAt`
+ 		FROM
+ 			`realestate`
+ 		WHERE
+ 			`id` = #{id}
+ 	</select>
+ 	
+ 	<select id="selectREstateRentPrice" resultType="design.jaine.spring.test.mybatis.domain.REstate"
+ 	parameterType="int">
+ 		SELECT
+ 			`id`
+ 			, `officeId`
+ 			, `address`
+ 			, `area`
+ 			, `type`
+ 			, `price`
+ 			, `rentPrice`
+ 			, `createdAt`
+ 			, `updatedAt`
+ 		FROM
+ 			`realestate`
+ 		WHERE
+ 			`rentPrice` <![CDATA[<=]]> #{rentPrice}
+ 	</select>
+ 	
+ 	<select id="selectREstateMulti" resultType="design.jaine.spring.test.mybatis.domain.REstate"
+ 	parameterType="int">
+ 		SELECT
+ 			`id`
+ 			, `officeId`
+ 			, `address`
+ 			, `area`
+ 			, `type`
+ 			, `price`
+ 			, `rentPrice`
+ 			, `createdAt`
+ 			, `updatedAt`
+ 		FROM
+ 			`realestate`
+ 		WHERE
+ 			`area` <![CDATA[>=]]> #{area} AND `price` <![CDATA[<=]]> #{price}	
+ 	</select>
+ 
+ </mapper>
