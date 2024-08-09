@@ -42,7 +42,7 @@
  	</select>
  	
  	<select id="selectREstateMulti" resultType="design.jaine.spring.test.mybatis.domain.REstate"
- 	parameterType="int">
+ 	parameterType="map">
  		SELECT
  			`id`
  			, `officeId`
@@ -56,7 +56,76 @@
  		FROM
  			`realestate`
  		WHERE
- 			`area` <![CDATA[>=]]> #{area} AND `price` <![CDATA[<=]]> #{price}	
+ 			`area` <![CDATA[>=]]> #{area} AND `price` <![CDATA[<=]]> #{price} AND `type` = "매매"	 
  	</select>
+ 	
+ 	<!-- 객체 -->
+ 	<insert id="insertRealEstate" parameterType="design.jaine.spring.test.mybatis.domain.REstate">
+ 		INSERT
+ 			`realestate`
+ 		(
+ 			`officeId`
+ 			, `address`
+ 			, `area`
+ 			, `type`
+ 			, `price`
+ 			, `rentPrice`
+ 		)
+ 		VALUE
+ 		(
+ 			#{officeId}
+ 			, #{address}
+ 			, #{area}
+ 			, #{type}
+ 			, #{price}
+ 			, #{rentPrice}
+ 		)
+ 	</insert>
+ 	
+ 	<!-- Parameter -->
+ 	<insert id="insertRealEstateByParam" parameterType="map">
+ 		INSERT
+ 			`realestate`
+ 		(
+ 			`officeId`
+ 			, `address`
+ 			, `area`
+ 			, `type`
+ 			, `price`
+ 			, `rentPrice`	
+ 		)
+ 		VALUE
+ 		(
+ 			#{officeId}
+ 			, #{address}
+ 			, #{area}
+ 			, #{type}
+ 			, #{price}
+ 			, #{rentPrice}
+ 		)
+ 	</insert>
+ 	
+ 	<update id="updateRealEstate" parameterType="map">
+ 		UPDATE
+ 			`realestate`
+ 		SET
+ 			`type` = #{type}
+ 			, `price` = #{price}
+ 			, `updatedAt` = now()
+ 		WHERE
+ 			`id` = #{id}
+ 	</update>
+ 
+ 	<delete id="deleteRealEstate" parameterType="int">
+ 		DELETE FROM
+ 			`realestate`
+ 		WHERE
+ 			`id` = #{id}
+ 	</delete>
  
  </mapper>
+ 
+ 
+ 
+ 
+ 
