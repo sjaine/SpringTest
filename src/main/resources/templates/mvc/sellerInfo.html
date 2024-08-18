@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+<title>Insert title here</title>
+</head>
+<body>
+	<div class="container"> 
+		<h2>판매자 정보</h2>
+		<img th:src="${seller.profileImage}" width="200">
+	
+		<div class="display-4" th:text="${seller.nickname}">다팔아</div>
+		<h2 class="text-warning" th:text="${seller.temperature}">36.5</h2>
+	</div>
+</body>
+</html>

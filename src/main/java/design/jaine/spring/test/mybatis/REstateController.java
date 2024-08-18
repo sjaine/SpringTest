@@ -18,21 +18,21 @@ public class REstateController {
 	@Autowired
 	private REstateService rEstateService;
 	
-	@RequestMapping("select/1")
+	@RequestMapping("/select/1")
 	@ResponseBody
 	public REstate rEstate(@RequestParam("id") int id) {
 		REstate rEstate = rEstateService.getREstate(id);
 		return rEstate;
 	}
 	
-	@RequestMapping("select/2")
+	@RequestMapping("/select/2")
 	@ResponseBody
 	public List<REstate> rEstateRentPrice(@RequestParam("rentPrice") int rentPrice) {
 		List<REstate> rEstateList = rEstateService.getREstateRentPrice(rentPrice);
 		return rEstateList;
 	}
 	
-	@RequestMapping("select/3")
+	@RequestMapping("/select/3")
 	@ResponseBody
 	public List<REstate> rEstateMulti(@RequestParam("area") int area, @RequestParam("price") int price) {
 		List<REstate> rEstateList = rEstateService.getREstateMulti(area, price);

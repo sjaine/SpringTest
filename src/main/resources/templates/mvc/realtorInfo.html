@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+</head>
+<body>
+	<div class="container">
+		<h2>공인중개사 정보</h2>
+		
+		<table class="table mt-3">
+			<tr>
+				<td>id</td>
+				<td th:text="${realtor.id}">129</td>
+			</tr>
+			<tr>
+				<td>상호명</td>
+				<td th:text="${realtor.office}">신윤수</td>
+			</tr>
+			<tr>
+				<td>전화번호</td>
+				<td th:text="${realtor.phoneNumber}">20030130</td>
+			</tr>
+			<tr>
+				<td>주소</td>
+				<td th:text="${realtor.address}">jaineee00@gmail.com</td>
+			</tr>
+			<tr>
+				<td>등급</td>
+				<td th:text="${realtor.grade}">jaineee00@gmail.com</td>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>
