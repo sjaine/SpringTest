@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+<title>Thymeleaf 날짜 포맷과 String 함수</title>
+</head>
+<body>
+	<div class="m-4">
+		<div class="display-4">회원 정보 리스트</div>
+		<table class="table mt-3">
+			<thead>
+				<tr>
+					<th>No</th>
+					<th>이름</th>
+					<th>생년월일</th>
+					<th>전화번호</th>
+					<th>국적</th>
+					<th>이메일</th>
+					<th>자기소개</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="member, status:${members}">
+					<td th:text="${status.count}">1</td>
+					<td th:text="${member.name}">유비</td>
+					<td th:with="birth = ${member.birth}">
+						<span th:text="${#temporals.format(birth, 'yyy년 MM월 dd일')}">member.birth 를 넣어서 괜히 두줄로 하지 않아도 됨</span>
+					</td>
+					<td th:with="phoneNumber = ${member.phoneNumber}">
+						<span th:if="${#strings.startsWith(phoneNumber, '010')}" th:text="${member.phoneNumber}"></span>
+						<span th:unless="${#strings.startsWith(phoneNumber, '010')}">유효하지 않은 전화번호</span>
+					</td>
+					<td th:with="nationality = ${member.nationality}">
+						<span th:text="${#strings.replace(nationality, '삼국시대', '삼국 - ')}"></span>
+					</td>
+					<td th:with="email = ${member.email}">
+						<span th:text="${#strings.arraySplit(email, '@')[0]}" class="font-weight-bolder"></span><span th:text="|@${#strings.arraySplit(email, '@')[1]}|"></span>
+					</td>
+					<td th:with="introduce = ${member.introduce}">
+						<span th:if="${#strings.length(introduce) > 15}" th:text="|${#strings.substring(introduce, 0, 15)}...|"></span>
+						<span th:unless="${#strings.length(introduce) > 15}" th:text="${introduce}"></span>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>

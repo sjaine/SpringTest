@@ -54,6 +54,6 @@ public class SellerController {
 	
 	@GetMapping("/input")
 	public String sellerInput() {
-		return "mvc/selleInput";
+		return "mvc/sellerInput";
 	}
 }

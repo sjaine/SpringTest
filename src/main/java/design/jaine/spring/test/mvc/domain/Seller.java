@@ -23,10 +23,10 @@ public class Seller {
 	public void setNickname(String nickname) {
 		this.nickname = nickname;
 	}
-	public double getTemparature() {
+	public double getTemperature() {
 		return temperature;
 	}
-	public void setTemparature(double temperature) {
+	public void setTemperature(double temperature) {
 		this.temperature = temperature;
 	}
 	public String getProfileImage() {
