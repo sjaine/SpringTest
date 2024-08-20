@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<link rel="stylesheet" href="/thymeleaf/weather/css/style.css">
+<title>Weather History</title>
+</head>
+<body>
+	<div id="wrap">
+		<section class="d-flex w-100 main">
+			<div class="navigation">
+				<div class="mt-3 text-center">
+					<img width="100" src="https://i.namu.wiki/i/O4LQHBhs-xO9MtRaDmKBJpTwq_4JB4Sv1xfg40iTVHIh0AJdX0O5deGX7oHlcQAg98Xjc8JWrngC819fS2nRqg.svg">				
+				</div>
+				<ul class="nav flex-column mt-4">
+					<li class="nav-item"><a href="/thymeleaf/weather/info" class="nav-link text-white font-weight-bold">날씨</a></li>
+					<li class="nav-item"><a href="/thymeleaf/weather/input" class="nav-link text-white font-weight-bold">날씨입력</a></li>
+					<li class="nav-item"><a href="#" class="nav-link text-white font-weight-bold">테마날씨</a></li>
+					<li class="nav-item"><a href="#" class="nav-link text-white font-weight-bold">관측 기후</a></li>
+				</ul>
+			</div>
+			<div class="context m-3">
+				<h2>날씨 입력</h2>
+				<form class="m-4" method="get" action="/thymeleaf/weather/create">
+					<div class="row justify-content-start">
+						<div class="d-flex form-inline form-group mr-4">
+							<label>날짜</label> 
+							<input type="text" class="form-control ml-3" name="date" id="datepicker">
+						</div>
+						<div class="d-flex form-inline form-group mr-4">
+							<label>날씨</label> 
+							<select class="form-control ml-3" name="weather">
+								<option value="맑음">맑음</option>
+								<option value="구름조금">구름조금</option>
+								<option value="흐림">흐림</option>
+								<option value="비">비</option>
+							</select>
+						</div>
+						<div class="d-flex form-inline form-group">
+							<label>미세먼지</label> 
+							<select class="form-control ml-3" name="microDust">
+								<option value="좋음">좋음</option>
+								<option value="보통">보통</option>
+								<option value="나쁨">나쁨</option>
+								<option value="최악">최악</option>
+							</select>
+						</div>
+					</div>
+					
+					<div class="row justify-content-start mt-4">
+						<div class="d-flex form-inline form-group mr-4">
+							<label>기온</label>
+							<div class="input-group">
+								<input type="text" class="form-control ml-3" name="temperatures">
+								<div class="input-group-append">
+									<span class="input-group-text">°C</span>
+								</div>
+							</div>
+						</div>
+						
+						<div class="d-flex form-inline form-group mr-4">
+							<label>강수량</label>
+							<div class="input-group">
+								<input type="text" class="form-control ml-3" name="precipitation">
+								<div class="input-group-append">
+									<span class="input-group-text">mm</span>
+								</div>
+							</div>
+						</div>
+						
+						<div class="d-flex form-inline form-group mr-4">
+							<label>풍속</label>
+							<div class="input-group">
+								<input type="text" class="form-control ml-3" name="windSpeed">
+								<div class="input-group-append">
+									<span class="input-group-text">km/h</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				
+					<button type="submit" class="btn btn-success mt-4 float-right">저장</button>
+				</form>
+			</div>
+		</section>
+		<footer class="w-100">
+			<hr style="margin-top: 0; margin-bottom: 0;">
+			<div class="d-flex align-items-center h-100">
+				<img src="https://i.namu.wiki/i/o6qydXv-Emi0WspSobO-DHaB0JjVCnKbh-VpXhnUuvOkrZViVxl5bXxySm9SYartyTb2l-w4vG5nyU2gt-wiOf9DlaferwL1QHSwcFX6E_mDp_GlaYGxT2xMpg2RhtcePYr39_FGb2AJdksQs-MMPA.svg" width="180">
+				<div class="ml-3">
+					<div>(07062) 서울시 동작구 여의대방로16길 61</div>
+					<div>Copyright@2020 KMA. All Rights RESERVED.</div>
+				</div>
+			</div>
+		</footer>
+	</div>
+</body>
+
+<script>
+      $(function(){
+         $('#datepicker').datepicker({
+        	 dateFormat: 'yy년 mm월 dd일'
+         });
+      })
+</script>
+</html>
