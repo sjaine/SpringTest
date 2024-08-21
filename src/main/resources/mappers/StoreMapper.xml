@@ -18,5 +18,19 @@
  		FROM
  			`store`
  	</select>
+ 	
+ 	<select id="selectStoreReview" resultType="design.jaine.spring.test.datebase.domain.Review">
+ 		SELECT
+ 			`id`
+ 			, `storeId`
+ 			, `menu`
+ 			, `userName`
+ 			, `point`
+ 			, `review`
+ 			, `createdAt`
+ 			, `updatedAt`
+ 		FROM
+ 			`new_review`
+ 	</select>
  
  </mapper>

@@ -36,12 +36,12 @@ public class WeatherController {
 	
 	@GetMapping("/create")
 	public String weatherCreate(
-				@RequestParam("date") @DateTimeFormat(pattern="yyyy년 MM월 dd일") LocalDate date
-				, @RequestParam("weather") String weather
-				, @RequestParam("microDust") String microDust
-				, @RequestParam("temperatures") double temperatures
-				, @RequestParam("precipitation") double precipitation
-				, @RequestParam("windSpeed") double windSpeed
+				@RequestParam @DateTimeFormat(pattern="yyyy년 MM월 dd일") LocalDate date
+				, @RequestParam String weather
+				, @RequestParam String microDust
+				, @RequestParam double temperatures
+				, @RequestParam double precipitation
+				, @RequestParam double windSpeed
 			) {
 		
 		weatherService.addWeather(date, weather, microDust, temperatures, precipitation, windSpeed);
