@@ -24,4 +24,16 @@ public class FavoriteService {
 		return count;
 		
 	}
+	
+	// 여부 체크
+	public boolean isDuplicateUrl(String url) {
+		int count = favoriteRepository.checkDuplicate(url);
+		
+		return count != 0;
+	}
+	
+	public int deleteFavoriteById(int id) {
+		int count = favoriteRepository.deleteFavorite(id);
+		return count;
+	}
 }

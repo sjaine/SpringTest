@@ -54,6 +54,34 @@ public class FavoriteController {
 		}
 		
 		return resultMap;
+	}
+	
+	@PostMapping("/duplicateCheck")
+	@ResponseBody
+	public Map<String, Boolean> isDuplicate(@RequestParam("url") String url) {
+		boolean isDuplicate = favoriteService.isDuplicateUrl(url);
+		
+		Map<String, Boolean> duplicateMap = new HashMap<>();
+		
+		duplicateMap.put("isDuplicate", isDuplicate);
+		
+		return duplicateMap;
+	}
+	
+	@GetMapping("/delete")
+	@ResponseBody
+	public Map<String, String> deleteFavorite(@RequestParam("id") int id) {
+		int count = favoriteService.deleteFavoriteById(id);
+		
+		Map<String, String> deleteMap = new HashMap<>();
+		
+		if(count == 1) {
+			deleteMap.put("deleteResult", "success");
+		} else {
+			deleteMap.put("deleteResult", "fail");
+		}
+		
+		return deleteMap;
 		
 	}
 }

@@ -9,14 +9,54 @@
 	<div class="container m-3">
 		<h2 class="mb-3">즐겨찾기 추가하기</h2>
 		<label>제목</label> <input type="text" id="nameInput" class="form-control">
-		<label class="mt-3">주소</label> <input type="text" id="urlInput" class="form-control">
-		<button type="button" class="btn btn-success mt-4" id="addBtn">추가</button>
+		<label class="mt-3">주소</label> 
+		<div class="form-row m-0 justify-content-between">
+			<input type="text" id="urlInput" class="form-control col-10">
+			<button type="button" class="btn btn-primary" id="duplicateCheckBtn">중복확인</button>
+		</div>
+		<div class="text-danger small mt-1 d-none" id="duplicateAlert">중복된 url 입니다.</div>
+		<div class="text-success small mt-1 d-none" id="noneDuplicateAlert">저장 가능한 url 입니다.</div>
+		<button type="button" class="btn btn-success mt-3" id="addBtn">추가</button>
 	</div>
 	
 	<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 	<script>
 		
 	$(document).ready(function() {
+		$("#duplicateCheckBtn").on("click", function() {
+			
+			let url = $("#urlInput").val();
+			
+			if(url == "") {
+				alert("주소를 입력하세요.");
+				return;
+			}
+			
+			if(!url.startsWith("https://") && !url.startsWith("http://")) {
+				alert("https:// 혹은 http://로 시작하는 주소를 입력하세요.");
+				return;
+			}
+			
+			$.ajax({
+				type: "post"
+				, url: "/ajax/favorite/duplicateCheck"
+				, data: {"url": url}
+				, success: function(data) {
+					if(data.isDuplicate) {
+						$("#duplicateAlert").removeClass("d-none");	
+						$("#noneDuplicateAlert").addClass("d-none");	
+					} else {
+						$("#duplicateAlert").addClass("d-none");
+						$("#noneDuplicateAlert").removeClass("d-none");	
+					}
+				}
+				, error: function() {
+					alert("Encountered Error!");
+				}
+			});
+			
+		});
+		
 		$("#addBtn").on("click", function() {
 			
 			let name = $("#nameInput").val();

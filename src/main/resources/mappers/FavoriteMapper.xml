@@ -29,5 +29,21 @@
  			, #{url}
  		)
  	</insert>
+ 	
+ 	<select id="checkDuplicate" parameterType="string" resultType="int">
+ 		SELECT
+ 			count(*)
+ 		FROM
+ 			`bookmark`
+ 		WHERE
+ 			`url` = #{url}
+ 	</select>
+ 	
+ 	<delete id="deleteFavorite" parameterType="int">
+ 		DELETE FROM
+ 			`bookmark`
+ 		WHERE
+ 			`id` = #{id}
+ 	</delete>
  
  </mapper>
