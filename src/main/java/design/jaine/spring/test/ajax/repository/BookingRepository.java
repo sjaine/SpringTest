@@ -22,4 +22,6 @@ public interface BookingRepository {
 			);
 	
 	public int deleteBookingById(@Param("id") int id);
+	
+	public Booking selectBooking(@Param("name") String name, @Param("phoneNumber") String phoneNumber);
 }

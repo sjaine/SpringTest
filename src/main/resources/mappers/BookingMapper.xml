@@ -48,5 +48,24 @@
  		WHERE
  			`id` = #{id}
  	</delete>
+ 	
+ 	<select id="selectBooking" parameterType="map" 
+ 	resultType="design.jaine.spring.test.ajax.domain.Booking">
+ 		SELECT
+ 			`id`
+ 			, `name`
+ 			, `headcount`
+ 			, `day`
+ 			, `date`
+ 			, `phoneNumber`
+ 			, `state`
+ 			, `createdAt`
+ 			, `updatedAt`
+ 		FROM
+ 			`booking`
+ 		WHERE
+ 			`name` = #{name}
+ 			AND `phoneNumber` = #{phoneNumber}
+ 	</select>
  
  </mapper>
